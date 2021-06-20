@@ -3,7 +3,6 @@ import { Form, Row, Col } from "react-bootstrap";
 
 const CustomForm = (props) => {
   const { handleSubmit, currentCity } = props;
-  console.log(currentCity);
   return (
     <Form onSubmit={handleSubmit} id="city-form">
       <Form.Group className="mb-3" controlId="name">
@@ -32,7 +31,7 @@ const CustomForm = (props) => {
         <Form.Group as={Col} controlId="longitude">
           <Form.Label>Coordinates Longitude</Form.Label>
           <Form.Control
-            type="number"
+            type="text"
             placeholder="Enter longitude"
             defaultValue={currentCity ? currentCity.long : null}
           />
@@ -41,7 +40,7 @@ const CustomForm = (props) => {
         <Form.Group as={Col} controlId="latitude">
           <Form.Label>Coordinates Longitude</Form.Label>
           <Form.Control
-            type="number"
+            type="text"
             placeholder="Enter latitude"
             defaultValue={currentCity ? currentCity.lat : null}
           />
