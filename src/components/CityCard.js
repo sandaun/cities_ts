@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 
 import styles from "../App.module.css";
@@ -16,6 +16,10 @@ const CityCard = (props) => {
 
   const [isImageError, setIsImageError] = useState(false);
 
+  useEffect(() => {
+    setIsImageError(false);
+  }, [title]);
+
   const onDelete = () => {
     deleteCity(location.id);
   };
@@ -31,11 +35,7 @@ const CityCard = (props) => {
   };
 
   const handleImageError = (e) => {
-    if (e) {
-      setIsImageError(true);
-    } else {
-      setIsImageError(false);
-    }
+    setIsImageError(true);
   };
 
   return (

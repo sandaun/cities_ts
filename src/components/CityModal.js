@@ -7,12 +7,12 @@ function CityModal(props) {
 
   const [isImageError, setIsImageError] = useState(false);
 
+  useEffect(() => {
+    setIsImageError(false);
+  }, [title]);
+
   const handleImageError = (e) => {
-    if (e) {
-      setIsImageError(true);
-    } else {
-      setIsImageError(false);
-    }
+    setIsImageError(true);
   };
 
   return (
