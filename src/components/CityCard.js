@@ -6,7 +6,6 @@ import styles from "../App.module.css";
 const CityCard = (props) => {
   const {
     location,
-    index,
     deleteCity,
     handleShowFormModal,
     setCurrentCity,
@@ -28,11 +27,7 @@ const CityCard = (props) => {
   };
 
   return (
-    <Card
-      style={{ width: "25em", height: "27em" }}
-      className="mt-3 mb-3 mr-5"
-      key={index}
-    >
+    <Card style={{ width: "25em", height: "27em" }} className="mt-3 mb-3 mr-5">
       <Card.Img
         variant="top"
         src={location.image_url}

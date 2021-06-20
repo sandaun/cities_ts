@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 import API from "./lib/api-service";
-import { CustomModal } from "./components/Modal";
+import { FormModal } from "./components/FormModal";
 import { CityModal } from "./components/CityModal";
 import { CityCard } from "./components/CityCard";
 import styles from "./App.module.css";
@@ -26,12 +26,12 @@ function App() {
     setLocations(data);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseFormModal = () => {
     setShowFormModal(false);
     setCurrentCity(null);
   };
 
-  const handleShowModal = () => setShowFormModal(true);
+  const handleShowFormModal = () => setShowFormModal(true);
 
   const handleShowCityModal = () => setShowCity(true);
   const handleCloseCityModal = () => setShowCity(false);
@@ -50,7 +50,7 @@ function App() {
       </Row>
       <Row>
         <Col className="d-flex justify-content-center w-100">
-          <Button variant="primary" onClick={handleShowModal}>
+          <Button variant="primary" onClick={handleShowFormModal}>
             Add New City
           </Button>
         </Col>
@@ -59,17 +59,17 @@ function App() {
         {locations.map((location, index) => (
           <CityCard
             location={location}
-            index={index}
+            key={index}
             deleteCity={deleteCity}
-            handleShowModal={handleShowModal}
+            handleShowFormModal={handleShowFormModal}
             handleShowCityModal={handleShowCityModal}
             setCurrentCity={setCurrentCity}
           />
         ))}
       </Row>
-      <CustomModal
+      <FormModal
         showFormModal={showFormModal}
-        handleClose={handleCloseModal}
+        handleClose={handleCloseFormModal}
         setUpdateList={setUpdateList}
         currentCity={currentCity}
       />
