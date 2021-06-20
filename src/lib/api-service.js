@@ -12,7 +12,6 @@ class Locations {
   };
 
   show = (id) => {
-    console.log(123, id);
     return this.locations.get("/" + id).then(({ data }) => data);
   };
 
@@ -31,7 +30,6 @@ class Locations {
   };
 
   update = (cityData) => {
-    console.log(555, cityData);
     const { name, description, longitude, latitude, image, id } = cityData;
 
     const body = {
