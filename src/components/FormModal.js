@@ -4,8 +4,8 @@ import API from "../lib/api-service";
 
 import { CustomForm } from "./Form";
 
-function CustomModal(props) {
-  const { show, handleClose, setUpdateList, currentCity } = props;
+function FormModal(props) {
+  const { showFormModal, handleClose, setUpdateList, currentCity } = props;
 
   const onApiSend = async (data) => {
     if (currentCity) {
@@ -15,7 +15,7 @@ function CustomModal(props) {
       await API.create(data);
     }
     setUpdateList(true);
-    // handleClose(); // ENABLE!!!!!
+    handleClose();
   };
 
   const handleSubmit = (event) => {
@@ -32,7 +32,7 @@ function CustomModal(props) {
   };
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={showFormModal} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Add New City</Modal.Title>
       </Modal.Header>
@@ -51,4 +51,4 @@ function CustomModal(props) {
   );
 }
 
-export { CustomModal };
+export { FormModal };

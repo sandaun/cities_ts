@@ -4,8 +4,14 @@ import { Button, Card } from "react-bootstrap";
 import styles from "../App.module.css";
 
 const CityCard = (props) => {
-  const { location, index, deleteCity, handleShowModal, setCurrentCity } =
-    props;
+  const {
+    location,
+    index,
+    deleteCity,
+    handleShowFormModal,
+    setCurrentCity,
+    handleShowCityModal,
+  } = props;
 
   const onDelete = () => {
     deleteCity(location.id);
@@ -13,7 +19,12 @@ const CityCard = (props) => {
 
   const onEdit = () => {
     setCurrentCity(location);
-    handleShowModal(true);
+    handleShowFormModal(true);
+  };
+
+  const onDetails = () => {
+    handleShowCityModal(true);
+    setCurrentCity(location);
   };
 
   return (
@@ -32,8 +43,12 @@ const CityCard = (props) => {
         <Card.Text className={styles.multiline}>{location.content}</Card.Text>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between">
-        <Button variant="outline-primary" className="align-self-end">
-          Go somewhere
+        <Button
+          variant="outline-primary"
+          className="align-self-end"
+          onClick={onDetails}
+        >
+          Show details
         </Button>
         <Button
           variant="outline-secondary"
