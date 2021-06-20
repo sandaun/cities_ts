@@ -12,6 +12,10 @@ const CityCard = (props) => {
     handleShowCityModal,
   } = props;
 
+  const { title, content, image_url } = location;
+
+  const [isImageError, setIsImageError] = useState(false);
+
   const onDelete = () => {
     deleteCity(location.id);
   };
@@ -26,16 +30,25 @@ const CityCard = (props) => {
     setCurrentCity(location);
   };
 
+  const handleImageError = (e) => {
+    if (e) {
+      setIsImageError(true);
+    } else {
+      setIsImageError(false);
+    }
+  };
+
   return (
     <Card style={{ width: "25em", height: "27em" }} className="mt-3 mb-3 mr-5">
       <Card.Img
         variant="top"
-        src={location.image_url}
+        src={isImageError ? "/images/defaultCity.jpg" : image_url}
         style={{ height: 220 }}
+        onError={(e) => handleImageError(e)}
       />
       <Card.Body>
-        <Card.Title>{location.title}</Card.Title>
-        <Card.Text className={styles.multiline}>{location.content}</Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text className={styles.multiline}>{content}</Card.Text>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between">
         <Button
